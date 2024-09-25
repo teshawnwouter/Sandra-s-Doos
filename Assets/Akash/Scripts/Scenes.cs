@@ -1,17 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Button : MonoBehaviour
+public class Scenes : MonoBehaviour
 {
-
-    Animator anim;
     // Start is called before the first frame update
-
-    private void Awake()
-    {
-        anim = GetComponent<Animator>();
-    }
     void Start()
     {
         
@@ -25,11 +19,6 @@ public class Button : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        anim.SetTrigger("Pressed");
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        anim.SetTrigger("Unpressed");
+        SceneManager.LoadScene("WinScene");
     }
 }
