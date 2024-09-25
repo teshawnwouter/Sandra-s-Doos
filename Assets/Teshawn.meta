@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Teshawn.meta
 guid: d6198ef38453d894197ba65074a1c210
+========
+guid: a7a0e1c436a18094aadf3b0546653c86
+>>>>>>>> cc95cb9168a2a0f700556d1e5bfd414c8979fc73:Assets/Akash.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
