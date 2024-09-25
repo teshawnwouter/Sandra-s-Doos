@@ -6,14 +6,18 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody m_rigidbody;
 
+    GameObject jumpForcer;
 
     [SerializeField] private float moveSpeed;
-
     [SerializeField] private float jumpHeight;
+
+    private float jumpTimer = 0;
+    private float jumpTrigger = 0.3f;
 
     void Awake()
     {
         m_rigidbody = GetComponent<Rigidbody>();
+        jumpForcer = GameObject.Find("JumpForcing");
     }
 
     void Update()
@@ -21,19 +25,34 @@ public class PlayerMovement : MonoBehaviour
         float translation = Input.GetAxis("Horizontal") * moveSpeed;
         translation *= Time.deltaTime;
 
-        transform.Translate(0, 0, translation);
+        jumpForcer.GetComponent<Rigidbody>().velocity = Vector3.right * translation;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        m_rigidbody.MovePosition(m_rigidbody.position + jumpForcer.GetComponent<Rigidbody>().velocity);
+
+        JumpTimer();
+        GroundCheck();
+    }
+
+    private void GroundCheck()
+    {
+        Debug.DrawRay(transform.position + new Vector3(0.3f, 0, 0), transform.TransformDirection(Vector3.down) * 0.8f, Color.yellow);
+        Debug.DrawRay(transform.position + new Vector3(-0.3f, 0, 0), transform.TransformDirection(Vector3.down) * 0.8f, Color.yellow);
+        if (Physics.Raycast(transform.position + new Vector3(0.3f, 0, 0), transform.TransformDirection(Vector3.down), out RaycastHit hit, 0.8f) || Physics.Raycast(transform.position + new Vector3(-0.3f, 0, 0), transform.TransformDirection(Vector3.down), out hit, 0.8f))
         {
-            m_rigidbody.AddForce(transform.up * jumpHeight);
+            Debug.Log("Did Hit");
+            if (Input.GetKey(KeyCode.Space) && jumpTimer >= jumpTrigger)
+            {
+                m_rigidbody.AddForce(transform.up * jumpHeight);
+                jumpTimer = 0;
+            }
         }
     }
 
-    void OnTriggerStay(Collider other)
+    private void JumpTimer()
     {
-        if (other.CompareTag(""))
+        if (jumpTimer < jumpTrigger)
         {
-            
+            jumpTimer += Time.deltaTime;
         }
     }
 }
