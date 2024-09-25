@@ -166,6 +166,7 @@ AudioMixerController:
     - 42faae73da156b04497bb1b64ec08dab
     - 2b9a9292d70f9624e827b144bfafaec5
     - 955de82ec2852094d806bc0dc479a5ce
+    - b1c734d336f57dd4696ed4182a5ac55f
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -181,6 +182,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: -4430401587686657004}
   - {fileID: 8242849838709659437}
+  - {fileID: 2481201389388284074}
   m_Volume: 62567a3992d5240459741323692cb05b
   m_Pitch: ac1b5074b911d344a8d08ae3f0766659
   m_Send: 00000000000000000000000000000000
@@ -220,6 +222,39 @@ AudioMixerSnapshotController:
     ac1b5074b911d344a8d08ae3f0766659: 1
     62567a3992d5240459741323692cb05b: 0
   m_TransitionOverrides: {}
+--- !u!243 &2481201389388284074
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Cupcakke
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: b1c734d336f57dd4696ed4182a5ac55f
+  m_Children: []
+  m_Volume: f92c68b193783de479ffb92e93071692
+  m_Pitch: 4f186e4fbcd05d145adf9fd0dc82b078
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 4174768173642211344}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &4174768173642211344
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: bd9dc6ca5000d3f42ad9c734fa3e35f1
+  m_EffectName: Attenuation
+  m_MixLevel: 8d01afcc12b766c4d9941981a59acdaa
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &4975697262256172227
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
