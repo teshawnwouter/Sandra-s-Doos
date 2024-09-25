@@ -21,4 +21,19 @@ public class Scenes : MonoBehaviour
     {
         SceneManager.LoadScene("WinScene");
     }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+
+    public void QuitGame()
+    {
+            Application.Quit();
+    }
+
+    public void OpenMenu()
+    {
+        SceneManager.LoadScene("AkashScene");
+    }
 }
