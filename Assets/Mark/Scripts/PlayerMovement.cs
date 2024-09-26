@@ -56,11 +56,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void GroundCheck()
     {
-        Debug.DrawRay(transform.position + new Vector3(0.3f, 0, 0), transform.TransformDirection(Vector3.down) * 0.8f, Color.yellow);
-        Debug.DrawRay(transform.position + new Vector3(-0.3f, 0, 0), transform.TransformDirection(Vector3.down) * 0.8f, Color.yellow);
-        if (Physics.Raycast(transform.position + new Vector3(0.3f, 0, 0), transform.TransformDirection(Vector3.down), out RaycastHit hit, 0.8f) || Physics.Raycast(transform.position + new Vector3(-0.3f, 0, 0), transform.TransformDirection(Vector3.down), out hit, 0.8f))
+        Debug.DrawRay(transform.position + new Vector3(0.33f, 0, 0), transform.TransformDirection(Vector3.down) * 0.8f, Color.yellow);
+        Debug.DrawRay(transform.position + new Vector3(-0.33f, 0, 0), transform.TransformDirection(Vector3.down) * 0.8f, Color.yellow);
+        Debug.DrawRay(transform.position + new Vector3(0, 0, 0), transform.TransformDirection(Vector3.down) * 0.8f, Color.yellow);
+        if (Physics.Raycast(transform.position + new Vector3(0, 0, 0), transform.TransformDirection(Vector3.down), out RaycastHit hit, 0.8f) ||Physics.Raycast(transform.position + new Vector3(0.33f, 0, 0), transform.TransformDirection(Vector3.down), out hit, 0.8f) || Physics.Raycast(transform.position + new Vector3(-0.33f, 0, 0), transform.TransformDirection(Vector3.down), out hit, 0.8f))
         {
-            Debug.Log("Did Hit");
             if (Input.GetKey(KeyCode.Space) && jumpTimer >= jumpTrigger)
             {
                 m_rigidbody.AddForce(transform.up * jumpHeight);
