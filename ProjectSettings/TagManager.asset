@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - LockPoint
+  - Undefined
   - Doos
+  - LockPoint
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - Water
   - UI
   - MouseWall
-  - 
-  - 
+  - Player
+  - Doos
   - 
   - 
   - 
