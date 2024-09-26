@@ -26,7 +26,11 @@ public class Button : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         anim.SetTrigger("Pressed");
-        door.OpenDoor();
+        if (door != null)
+        {
+            door.OpenDoor();
+        }
+
     }
 
     private void OnCollisionExit(Collision collision)
