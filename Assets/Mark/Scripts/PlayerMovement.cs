@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private float jumpTimer = 0;
     private float jumpTrigger = 0.3f;
 
+    public int coins = 0;
+
     void Awake()
     {
         m_rigidbody = GetComponent<Rigidbody>();
@@ -55,4 +57,6 @@ public class PlayerMovement : MonoBehaviour
             jumpTimer += Time.deltaTime;
         }
     }
+
+
 }
