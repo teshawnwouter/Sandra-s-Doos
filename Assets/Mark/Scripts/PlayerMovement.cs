@@ -43,11 +43,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (translation > 0)
         {
-            playerModel.transform.rotation = Quaternion.Euler(0,90,0);
+            playerModel.transform.rotation = Quaternion.Euler(0, 90, 0);
         }
         if (translation < 0)
         {
-            playerModel.transform.rotation = Quaternion.Euler(0,-90,0);
+            playerModel.transform.rotation = Quaternion.Euler(0, -90, 0);
         }
 
         JumpTimer();
