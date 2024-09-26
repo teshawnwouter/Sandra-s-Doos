@@ -30,7 +30,7 @@ public class BoxDestroyer : MonoBehaviour
             RaycastHit hit;
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, transform.position + (transform.forward * 100f));
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 100.0f, mask))
+            if (Physics.Raycast(transform.position, transform.up, out hit, 100.0f, mask))
             {
                 Debug.Log("geraakt");
                 //Destroy(other);

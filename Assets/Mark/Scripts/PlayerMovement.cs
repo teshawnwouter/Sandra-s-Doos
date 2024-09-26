@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     GameObject jumpForcer;
     [SerializeField] GameObject playerModel;
 
+    [SerializeField] LayerMask mask;
+
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpHeight;
 
@@ -68,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawRay(transform.position + new Vector3(0.33f, 0, 0), transform.TransformDirection(Vector3.down) * 0.8f, Color.yellow);
         Debug.DrawRay(transform.position + new Vector3(-0.33f, 0, 0), transform.TransformDirection(Vector3.down) * 0.8f, Color.yellow);
         Debug.DrawRay(transform.position + new Vector3(0, 0, 0), transform.TransformDirection(Vector3.down) * 0.8f, Color.yellow);
-        if (Physics.Raycast(transform.position + new Vector3(0, 0, 0), transform.TransformDirection(Vector3.down), out RaycastHit hit, 0.8f) ||Physics.Raycast(transform.position + new Vector3(0.33f, 0, 0), transform.TransformDirection(Vector3.down), out hit, 0.8f) || Physics.Raycast(transform.position + new Vector3(-0.33f, 0, 0), transform.TransformDirection(Vector3.down), out hit, 0.8f))
+        if (Physics.Raycast(transform.position + new Vector3(0, 0, 0), transform.TransformDirection(Vector3.down), out RaycastHit hit, 0.8f, mask) ||Physics.Raycast(transform.position + new Vector3(0.33f, 0, 0), transform.TransformDirection(Vector3.down), out hit, 0.8f, mask) || Physics.Raycast(transform.position + new Vector3(-0.33f, 0, 0), transform.TransformDirection(Vector3.down), out hit, 0.8f, mask))
         {
             if (Input.GetKey(KeyCode.Space) && jumpTimer >= jumpTrigger)
             {
