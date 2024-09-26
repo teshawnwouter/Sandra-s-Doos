@@ -19,7 +19,7 @@ public class BoxThrow : MonoBehaviour
     [SerializeField] float forceMultiplier;
     Animator anim;
     GameObject player;
-    Vector3 lockPoint;
+    GameObject lockPoint;
     bool inAir = false;
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class BoxThrow : MonoBehaviour
         m_rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         player = GameObject.FindWithTag("Player");
-        lockPoint = GameObject.FindWithTag("LockPoint").transform.position;
+        lockPoint = GameObject.FindWithTag("LockPoint");
     }
     void Update()
     {
@@ -60,7 +60,7 @@ public class BoxThrow : MonoBehaviour
 
         if (m_boxStates == BoxStates.InHands)
         {
-            transform.position = lockPoint;
+            transform.position = lockPoint.transform.position;
         }
     }
 
@@ -80,10 +80,10 @@ public class BoxThrow : MonoBehaviour
         float loops = 0;
 
         inAir = true;
-        while (transform.position != lockPoint && loops < 300)
+        while (transform.position != lockPoint.transform.position && loops < 300)
         {
             loops++;
-            transform.position = Vector3.MoveTowards(transform.position, lockPoint, 0.2f);
+            transform.position = Vector3.MoveTowards(transform.position, lockPoint.transform.position, 0.2f);
             yield return new WaitForSeconds(0.01f);
         }
         m_boxStates = BoxStates.InHands;
