@@ -18,14 +18,17 @@ public class BoxThrow : MonoBehaviour
     [SerializeField] LayerMask detectionLayer;
     [SerializeField] float forceMultiplier;
     Animator anim;
-    [SerializeField] Animation grow;
+    GameObject player;
+    Vector3 lockPoint;
+    bool inAir = false;
     private void Awake()
     {
         m_boxStates = BoxStates.InHands;
         m_collider = GetComponent<Collider>();
         m_rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-
+        player = GameObject.FindWithTag("Player");
+        lockPoint = GameObject.FindWithTag("LockPoint").transform.position;
     }
     void Update()
     {
@@ -36,8 +39,8 @@ public class BoxThrow : MonoBehaviour
                 case BoxStates.InHands:
                     m_rb.isKinematic = false;
                     m_collider.enabled = true;
-                    m_rb.AddForce((mouseCheck()-transform.position)*forceMultiplier, ForceMode.Impulse);
                     anim.SetTrigger("Grow");
+                    m_rb.AddForce((mouseCheck()-transform.position)*forceMultiplier, ForceMode.Impulse);
                     m_boxStates = BoxStates.Launched;
                     break;
                 case BoxStates.Launched:
@@ -45,10 +48,19 @@ public class BoxThrow : MonoBehaviour
                     m_boxStates = BoxStates.Frozen;
                     break;
                 case BoxStates.Frozen:
-                    m_collider.enabled = false;
-                    m_boxStates = BoxStates.InHands;
+                    if (!inAir)
+                    {
+                        m_collider.enabled = false;
+                        anim.SetTrigger("Shrink");
+                        StartCoroutine(ReturnBox());
+                    }                   
                     break;
             }
+        }
+
+        if (m_boxStates == BoxStates.InHands)
+        {
+            transform.position = lockPoint;
         }
     }
 
@@ -61,5 +73,20 @@ public class BoxThrow : MonoBehaviour
         }
         else
             return Vector3.zero;
+    }
+
+    IEnumerator ReturnBox()
+    {
+        float loops = 0;
+
+        inAir = true;
+        while (transform.position != lockPoint && loops < 300)
+        {
+            loops++;
+            transform.position = Vector3.MoveTowards(transform.position, lockPoint, 0.2f);
+            yield return new WaitForSeconds(0.01f);
+        }
+        m_boxStates = BoxStates.InHands;
+        inAir = false;
     }
 }
