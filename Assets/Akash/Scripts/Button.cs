@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-
+    [SerializeField] bool playerButton;
     Animator anim;
     [SerializeField] Door door;
     // Start is called before the first frame update
@@ -25,12 +25,23 @@ public class Button : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        anim.SetTrigger("Pressed");
-        if (door != null)
-        {
-            door.OpenDoor();
+        if (playerButton && collision.transform.CompareTag("Player")) 
+            {
+            anim.SetTrigger("Pressed");
+            if (door != null)
+            {
+                door.OpenDoor();
+            }
         }
 
+        if(!playerButton && collision.transform.CompareTag("Doos"))
+        {
+            anim.SetTrigger("Pressed");
+            if (door != null)
+            {
+                door.OpenDoor();
+            }
+        }
 
     }
 
