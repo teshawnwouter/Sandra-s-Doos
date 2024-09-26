@@ -6,6 +6,8 @@ public class Door : MonoBehaviour
 {
     Animator anim;
     bool doorOpened = false;
+    [SerializeField] int buttonsNeeded;
+    public int buttonsPressed;
     // Start is called before the first frame update
 
     private void Awake()
@@ -25,8 +27,11 @@ public class Door : MonoBehaviour
 
     public void OpenDoor()
     {
-        if (!doorOpened)
+        buttonsPressed++;
+
+        if (!doorOpened && buttonsPressed >= buttonsNeeded)
         {
+
             anim.SetTrigger("Door");
             doorOpened = true;
         }

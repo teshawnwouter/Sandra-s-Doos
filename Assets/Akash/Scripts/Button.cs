@@ -31,11 +31,13 @@ public class Button : MonoBehaviour
             door.OpenDoor();
         }
 
+
     }
 
     private void OnCollisionExit(Collision collision)
     {
         anim.SetTrigger("Unpressed");
+        door.buttonsPressed--;
     }
 
 }
