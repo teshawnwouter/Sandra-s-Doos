@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     private float jumpTimer = 0;
     private float jumpTrigger = 0.3f;
 
+    public Image jumpscareImage;
+    public float flashDuration = 0.2f;
+    private bool jumpscareTriggered = false;
     public int coins = 0;
 
     void Awake()
@@ -52,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
 
         JumpTimer();
         GroundCheck();
+
+        if (coins >= 25 && !jumpscareTriggered)
+        {
+            StartCoroutine(FlashJumpscare());
+        }
     }
 
     private void GroundCheck()
@@ -75,5 +84,13 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpTimer += Time.deltaTime;
         }
+    }
+
+    private IEnumerator FlashJumpscare()
+    {
+        jumpscareTriggered = true;
+        jumpscareImage.enabled = true;
+        yield return new WaitForSeconds(flashDuration);
+        jumpscareImage.enabled = false;
     }
 }
