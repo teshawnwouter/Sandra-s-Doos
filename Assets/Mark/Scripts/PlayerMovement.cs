@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody m_rigidbody;
+    [SerializeField] Animator animator;
 
     GameObject jumpForcer;
+    [SerializeField] GameObject playerModel;
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpHeight;
@@ -28,8 +30,25 @@ public class PlayerMovement : MonoBehaviour
         translation *= Time.deltaTime;
 
         jumpForcer.GetComponent<Rigidbody>().velocity = Vector3.right * translation;
-
         m_rigidbody.MovePosition(m_rigidbody.position + jumpForcer.GetComponent<Rigidbody>().velocity);
+
+        if (translation != 0)
+        {
+            animator.SetBool("IsRunning", true);
+        }
+        else
+        {
+            animator.SetBool("IsRunning", false);
+        }
+
+        if (translation > 0)
+        {
+            playerModel.transform.rotation = Quaternion.Euler(0,90,0);
+        }
+        if (translation < 0)
+        {
+            playerModel.transform.rotation = Quaternion.Euler(0,-90,0);
+        }
 
         JumpTimer();
         GroundCheck();
@@ -57,6 +76,4 @@ public class PlayerMovement : MonoBehaviour
             jumpTimer += Time.deltaTime;
         }
     }
-
-
 }
