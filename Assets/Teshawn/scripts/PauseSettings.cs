@@ -10,8 +10,11 @@ public class PauseSettings : MonoBehaviour
     [SerializeField] private AudioMixer mixer;
     [SerializeField] private TMP_Text masterVolText, musicVolText, SFXVolText;
     [SerializeField] private Slider masterVolSlider, musicSlider, SFXSlider;
+
     void Start()
     {
+        
+
         float vol = 0f;
 
         mixer.GetFloat("Master", out vol);
@@ -32,7 +35,7 @@ public class PauseSettings : MonoBehaviour
 
 
     }
-
+    #region Audio
     public void MasterVolume()
     {
         masterVolText.text = Mathf.Round(masterVolSlider.value + 80).ToString();
@@ -51,4 +54,5 @@ public class PauseSettings : MonoBehaviour
         mixer.SetFloat("SFX", SFXSlider.value);
         PlayerPrefs.SetFloat("SFX", SFXSlider.value);
     }
+    #endregion
 }
