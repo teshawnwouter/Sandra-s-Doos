@@ -14,7 +14,10 @@ public class Scenes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.Escape)) 
+        {
+            SceneManager.LoadScene("GameOverScene");
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -24,7 +27,7 @@ public class Scenes : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("ElgerScene");
     }
 
     public void QuitGame()
@@ -36,4 +39,6 @@ public class Scenes : MonoBehaviour
     {
         SceneManager.LoadScene("AkashScene");
     }
+
+
 }

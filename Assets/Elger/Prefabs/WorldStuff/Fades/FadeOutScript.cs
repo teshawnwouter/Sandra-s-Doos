@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.UI;
 using UnityEngine.UI;
 
 public class FadeOutScript : MonoBehaviour
@@ -29,7 +28,7 @@ public class FadeOutScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.transform.position = new Vector3(NewPoint.x, NewPoint.y);
+            other.gameObject.transform.position = new Vector3(NewPoint.x, NewPoint.y,NewPoint.z);
         }
     }
 }

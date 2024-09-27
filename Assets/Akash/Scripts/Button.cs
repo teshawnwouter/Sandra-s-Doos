@@ -47,8 +47,18 @@ public class Button : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        anim.SetTrigger("Unpressed");
-        door.buttonsPressed--;
+
+        if (playerButton && collision.transform.CompareTag("Player"))
+        {
+            anim.SetTrigger("Unpressed");
+            door.buttonsPressed--;
+        }
+
+        if (!playerButton && collision.transform.CompareTag("Doos"))
+        {
+            anim.SetTrigger("Unpressed");
+            door.buttonsPressed--;
+        }
     }
 
 }
