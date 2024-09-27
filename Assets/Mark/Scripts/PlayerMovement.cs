@@ -92,10 +92,10 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator FlashJumpscare()
     {
         jumpscareTriggered = true;
-        jumpscareImage.enabled = false;
+        jumpscareImage.enabled = true;
         Debug.Log(jumpscareImage);
         yield return new WaitForSeconds(flashDuration);
         Debug.Log("test");
-        jumpscareImage.enabled = true;
+        jumpscareImage.enabled = false;
     }
 }
