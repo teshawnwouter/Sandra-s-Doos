@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody m_rigidbody;
     [SerializeField] Animator animator;
+    [SerializeField] TextMeshProUGUI coinText;
 
     GameObject jumpForcer;
     [SerializeField] GameObject playerModel;
@@ -33,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        coinText.text = "coins: " + coins;
+
         float translation = Input.GetAxis("Horizontal") * moveSpeed;
         translation *= Time.deltaTime;
 
@@ -71,13 +75,23 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawRay(transform.position + new Vector3(0.33f, 0, 0), transform.TransformDirection(Vector3.down) * 0.8f, Color.yellow);
         Debug.DrawRay(transform.position + new Vector3(-0.33f, 0, 0), transform.TransformDirection(Vector3.down) * 0.8f, Color.yellow);
         Debug.DrawRay(transform.position + new Vector3(0, 0, 0), transform.TransformDirection(Vector3.down) * 0.8f, Color.yellow);
-        if (Physics.Raycast(transform.position + new Vector3(0, 0, 0), transform.TransformDirection(Vector3.down), out RaycastHit hit, 0.8f, mask) ||Physics.Raycast(transform.position + new Vector3(0.33f, 0, 0), transform.TransformDirection(Vector3.down), out hit, 0.8f, mask) || Physics.Raycast(transform.position + new Vector3(-0.33f, 0, 0), transform.TransformDirection(Vector3.down), out hit, 0.8f, mask))
+        if (Physics.Raycast(transform.position + new Vector3(0, 0, 0), transform.TransformDirection(Vector3.down), out RaycastHit hit, 0.8f, mask) || Physics.Raycast(transform.position + new Vector3(0.33f, 0, 0), transform.TransformDirection(Vector3.down), out hit, 0.8f, mask) || Physics.Raycast(transform.position + new Vector3(-0.33f, 0, 0), transform.TransformDirection(Vector3.down), out hit, 0.8f, mask))
         {
             if (Input.GetKey(KeyCode.Space) && jumpTimer >= jumpTrigger)
             {
                 m_rigidbody.AddForce(transform.up * jumpHeight);
                 jumpTimer = 0;
+                animator.SetTrigger("Jump");
             }
+        }
+
+        if (m_rigidbody.velocity.y < 0)
+        {
+            animator.SetBool("IsFalling", true);
+        }
+        else
+        {
+            animator.SetBool("IsFalling", false);
         }
     }
 
