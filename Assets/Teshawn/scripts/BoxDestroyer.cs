@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Loading;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class BoxDestroyer : MonoBehaviour
 {
 
@@ -33,16 +33,14 @@ public class BoxDestroyer : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.up, out hit, 100.0f, mask))
             {
                 Debug.Log("geraakt");
-                //Destroy(other);
                 if (hit.transform.CompareTag("Doos"))
                 {
                     Debug.Log("heb de doos Geraakt");
-                    Destroy(hit.transform.gameObject);
-
+                    SceneManager.LoadScene("GameOverScene");
                 }
                 if (hit.transform.CompareTag("Player"))
                 {
-                    Destroy(hit.transform.gameObject);
+                    SceneManager.LoadScene("GameOverScene");
                 }
             }
             yield return new WaitForSeconds(1f);
