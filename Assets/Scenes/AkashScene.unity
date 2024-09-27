@@ -270,6 +270,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   playerModel: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
   moveSpeed: 5
   jumpHeight: 300
   jumpscareImage: {fileID: 0}
@@ -387,10 +390,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1225445231}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1230, y: -670}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &939926927
 MonoBehaviour:
@@ -483,6 +486,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7423729470527059358, guid: d4c6762012b2cf844ab6570a4418cca5, type: 3}
+      propertyPath: coins
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423729470527059358, guid: d4c6762012b2cf844ab6570a4418cca5, type: 3}
+      propertyPath: flashDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423729470527059358, guid: d4c6762012b2cf844ab6570a4418cca5, type: 3}
       propertyPath: jumpscareImage
       value: 
       objectReference: {fileID: 939926927}
@@ -570,7 +581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1225445228
 MonoBehaviour:
   m_ObjectHideFlags: 0

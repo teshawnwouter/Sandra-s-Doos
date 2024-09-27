@@ -19,8 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private float jumpTimer = 0;
     private float jumpTrigger = 0.3f;
 
-    public Image jumpscareImage;
-    public float flashDuration = 0.2f;
+    public GameObject jumpscareImage;
+    public float flashDuration = 1f;
     private bool jumpscareTriggered = false;
     public int coins = 0;
 
@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         m_rigidbody = GetComponent<Rigidbody>();
         jumpForcer = GameObject.Find("JumpForcing");
+        jumpscareImage = FindObjectOfType<GameObject>();
     }
 
     void Update()
@@ -91,8 +92,10 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator FlashJumpscare()
     {
         jumpscareTriggered = true;
-        jumpscareImage.enabled = true;
+        jumpscareImage.SetActive(true);
+        Debug.Log(jumpscareImage);
         yield return new WaitForSeconds(flashDuration);
-        jumpscareImage.enabled = false;
+        Debug.Log("test");
+        jumpscareImage.SetActive(false);
     }
 }
