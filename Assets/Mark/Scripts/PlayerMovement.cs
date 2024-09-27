@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody m_rigidbody;
     [SerializeField] Animator animator;
+    [SerializeField] TextMeshProUGUI coinText;
 
     GameObject jumpForcer;
     [SerializeField] GameObject playerModel;
@@ -33,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        coinText.text = "coins: " + coins;
+
         float translation = Input.GetAxis("Horizontal") * moveSpeed;
         translation *= Time.deltaTime;
 
