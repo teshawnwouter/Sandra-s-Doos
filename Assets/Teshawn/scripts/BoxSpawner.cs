@@ -5,18 +5,7 @@ using UnityEngine;
 public class BoxSpawner : MonoBehaviour
 {
     public GameObject doos;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
+  
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.gameObject.name);
