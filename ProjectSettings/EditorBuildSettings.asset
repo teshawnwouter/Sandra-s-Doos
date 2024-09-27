@@ -9,11 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScene.unity
     guid: a31ffe8abe929f64ba7cb98b77a43b05
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/AkashScene.unity
-    guid: 68e8e7af3988b4644b66c42020cb1954
+    path: Assets/Scenes/ElgerScene.unity
+    guid: 6624b3dcf9e626a488527df3ccacc4dd
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: 0fbe830dc71e8d4479022d9cea277f35
